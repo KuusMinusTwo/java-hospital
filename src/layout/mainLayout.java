@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import pages.homePage;
 import pages.information;
+import pages.services.inspection;
 
 import java.awt.*;
 
@@ -29,7 +30,7 @@ public class mainLayout extends JFrame {
         
         homePage panel1 = new homePage();
         
-        JPanel panel2 = new JPanel();
+        inspection panel2 = new inspection();
         panel2.add(new JLabel("Content 2"));
         information panel3 = new information();
         
