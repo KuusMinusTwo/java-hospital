@@ -14,12 +14,16 @@ public class mainLayout extends JFrame {
     public static JPanel contentPanel;
     public static CardLayout cardLayout;
     public static header header;
+    public static JDialog dialog = new JDialog((Frame)null, "dialog", true);
+            
     
     public mainLayout()  {
         try{
         setTitle("Hospital");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         
         
         sidebarPanel = new sidebar();

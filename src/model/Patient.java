@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class Patient {
-    public void SavePatient( String firstname, String lastname, String dateofbirth, int age){
+    public String firstname;
+    public String lastname;
+    public String dateofbirth;
+    public int age;
+    public void SavePatient( ){
         try{
             //database: Hospital, user: root, pwd: bayraaT1$DA
             Connection conn = Database.conn;
