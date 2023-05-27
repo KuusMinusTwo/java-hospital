@@ -1,5 +1,8 @@
 package layout;
 import javax.swing.*;
+
+import widgets.timeTable;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,8 +36,8 @@ public class sidebar extends JPanel implements ActionListener{
         navigation.add(serviceBtn);
         navigation.add(infoBtn);
 
-        JPanel timeTable = new JPanel();
-        timeTable.add(new JLabel("timeTable"));
+        timeTable timeTable = new timeTable();
+        // timeTable.add(new JLabel("timeTable"));
         timeTable.setPreferredSize(new Dimension(getWidth(), 400));
 
 
