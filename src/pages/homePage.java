@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import layout.mainLayout;
 import layout.sidebar;
 
 public class homePage extends JPanel{
@@ -20,13 +21,12 @@ public class homePage extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             userTestWindow loginPanel = new userTestWindow();
-            JDialog dialog = new JDialog((Frame)null, "Login", true);
-            dialog.setUndecorated(true);
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.getContentPane().add(loginPanel);
-            dialog.pack();
-            dialog.setLocationRelativeTo(null);
-            dialog.setVisible(true);
+           
+            loginPanel.setPreferredSize(new Dimension(600, 270));
+            mainLayout.dialog.getContentPane().add(loginPanel);
+            mainLayout.dialog.pack();
+            mainLayout.dialog.setLocationRelativeTo(null);
+            mainLayout.dialog.setVisible(true);
            
         }
     };
@@ -59,7 +59,6 @@ public class homePage extends JPanel{
         JPanel buttons = new JPanel();
         buttons.setLayout(new BorderLayout());
 
-        
         testResult = new JButton();
         JLabel text=new JLabel("<html><div style='text-align: center;'>Шинжилгээний хариу харах</div></html>" );
         
