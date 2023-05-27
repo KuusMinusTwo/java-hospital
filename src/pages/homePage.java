@@ -38,7 +38,7 @@ public class homePage extends JPanel{
         
         
         try {
-            backgroundImage = ImageIO.read(new File("C:/School/java/hospital/java-hospital/src/asset/images/home-background.jpg")); 
+            backgroundImage = ImageIO.read(getClass().getResource("../asset/images/home-background.jpg")); 
         } catch (IOException e) {
             e.printStackTrace();
         }
