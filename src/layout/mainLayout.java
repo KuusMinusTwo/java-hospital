@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import pages.homePage;
 import pages.information;
+import pages.serviceList;
 import pages.services.inspection;
 
 import java.awt.*;
@@ -33,14 +34,16 @@ public class mainLayout extends JFrame {
         contentPanel.setLayout(cardLayout);
         
         homePage panel1 = new homePage();
+        serviceList panel2 = new serviceList();
         
-        inspection panel2 = new inspection();
-        panel2.add(new JLabel("Content 2"));
+        // inspection panel2 = new inspection();
+        // panel2.add(new JLabel("Content 2"));
         information panel3 = new information();
         
         
         contentPanel.add(scroll(panel1), "HomePage");
         contentPanel.add(scroll(panel2), "Services");
+        
         contentPanel.add(scroll(panel3), "Information");
         
         header=new header();
