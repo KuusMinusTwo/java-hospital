@@ -5,7 +5,6 @@ import javax.swing.*;
 import pages.homePage;
 import pages.information;
 import pages.serviceList;
-import pages.services.inspection;
 
 import java.awt.*;
 

@@ -44,10 +44,19 @@ public class userTestWindow extends JPanel{
         JButton continueButton = new JButton("Үргэлжлүүлэх");
         // backButton.setPreferredSize(new Dimension());
         continueButton.addActionListener(new ActionListener() {
+            
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle continue button action
-                System.out.println("Continue button clicked");
+                
+                mainLayout.dialog.setVisible(false);
+                inspectionResult loginPanel = new inspectionResult();
+            
+                loginPanel.setPreferredSize(new Dimension(600, 270));
+                mainLayout.dialog.getContentPane().removeAll();
+                mainLayout.dialog.getContentPane().add(loginPanel);
+                mainLayout.dialog.pack();
+                mainLayout.dialog.setLocationRelativeTo(null);
+                mainLayout.dialog.setVisible(true);
             }
         });
 

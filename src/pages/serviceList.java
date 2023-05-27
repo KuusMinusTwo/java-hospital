@@ -13,7 +13,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import layout.mainLayout;
-import layout.sidebar;
 import pages.services.inspection;
 
 public class serviceList extends JPanel {
@@ -21,12 +20,17 @@ public class serviceList extends JPanel {
     ActionListener dropDownListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            try{
             JComboBox<String> source = (JComboBox<String>) e.getSource();
             String selectedOption = (String) source.getSelectedItem();
             System.out.println("Selected Option: " + selectedOption);
             inspection inspection=new inspection();
             mainLayout.contentPanel.add(inspection, "inspection");
             mainLayout.cardLayout.show(mainLayout.contentPanel, "inspection");
+            }
+            catch(Exception ex){
+
+            }
         }
     };
     public serviceList(){
