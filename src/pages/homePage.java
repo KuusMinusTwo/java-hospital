@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
+
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
@@ -19,7 +19,15 @@ public class homePage extends JPanel{
     ActionListener testResultListener = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+            userTestWindow loginPanel = new userTestWindow();
+            JDialog dialog = new JDialog((Frame)null, "Login", true);
+            dialog.setUndecorated(true);
+            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            dialog.getContentPane().add(loginPanel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+           
         }
     };
     ActionListener timeOrderListener = new ActionListener() {
@@ -34,7 +42,6 @@ public class homePage extends JPanel{
         top.setOpaque(false);
         
         top.setPreferredSize(new Dimension(getWidth(), 950));
-        //Border border = BorderFactory.createLineBorder(Color.RED, 2);  // Create a red line border
         
         
         try {
