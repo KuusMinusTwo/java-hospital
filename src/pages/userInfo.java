@@ -2,6 +2,9 @@ package pages;
 
 
 import javax.swing.*;
+
+import model.Patient;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -91,16 +94,16 @@ public class userInfo extends JPanel{
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                calculateAge();
+                Patient user = new Patient();
+                user.firstname = firstNameField.getText();
+                user.lastname = lastNameField.getText();
+                user.dateofbirth  = dobField.getText();
+                user.age = Integer.parseInt(ageField.getText());
+                user.register = registerField.getText();
+                user.Save();
+
+                // Save the input here, e.g., in a variable or data structure
             }
         });
-    }
-
-    private void calculateAge() {
-        String dob = dobField.getText();
-        LocalDate birthDate = LocalDate.parse(dob);
-        LocalDate currentDate = LocalDate.now();
-        int age = Period.between(birthDate, currentDate).getYears();
-        ageField.setText(Integer.toString(age));
     }
 }
