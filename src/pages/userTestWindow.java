@@ -29,7 +29,7 @@ public class userTestWindow extends JPanel{
         usernameField.setMaximumSize(usernameField.getPreferredSize());
         JLabel passwordLabel = new JLabel("Код:");
         passwordLabel.setFont(new Font("Arial", Font.BOLD, 30));
-        JPasswordField passwordField = new JPasswordField(15);
+        JTextField passwordField = new JTextField();
         passwordField.setFont(font);
         font = new Font(passwordField.getFont().getName(), Font.PLAIN, 30);
         passwordField.setMaximumSize(passwordField.getPreferredSize());
@@ -49,9 +49,10 @@ public class userTestWindow extends JPanel{
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                Vector<String> data=Vector<String>();
+                Vector<String> data=new Vector<String>();
                 if(Database.hasDB){
                     data = Database.inspectionResult(1, "УО02280410");
+                    // data = Database.inspectionResult(Integer.parseInt(passwordField.getText()), usernameField.getText());
                 }
                 else{
                     data.add("УО02280410");
@@ -65,7 +66,7 @@ public class userTestWindow extends JPanel{
                 }
 
                 mainLayout.dialog.setVisible(false);
-                inspectionResult loginPanel = new inspectionResult();
+                inspectionResult loginPanel = new inspectionResult(data);
             
                 loginPanel.setPreferredSize(new Dimension(600, 270));
                 mainLayout.dialog.getContentPane().removeAll();
