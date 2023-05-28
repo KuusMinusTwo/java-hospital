@@ -40,7 +40,7 @@ public class treatmentInfo extends JPanel{
         
         JPanel rightSide = new JPanel();
         
-        JPanel timeTable= new JPanel();
+        HourTable timeTable= new HourTable();
         timeTable.setPreferredSize(new Dimension(300, 500));
         timeTable.setBackground(Color.CYAN);
 
