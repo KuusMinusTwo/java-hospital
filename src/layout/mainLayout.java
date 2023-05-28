@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import pages.homePage;
 import pages.information;
+import pages.nurse;
 import pages.serviceList;
 
 import java.awt.*;
@@ -40,9 +41,16 @@ public class mainLayout extends JFrame {
         // inspection panel2 = new inspection();
         // panel2.add(new JLabel("Content 2"));
         information panel3 = new information();
+        JPanel panel4 = new JPanel();
+
+        nurse panel5=new nurse();
+        panel5.setPreferredSize(new Dimension(700, 300));
+        panel4.add(panel5);
+
         
         
         contentPanel.add(panel1, "HomePage");
+        contentPanel.add(panel4, "Nurse");
         contentPanel.add(scroll(panel2), "Services");
         
         contentPanel.add(scroll(panel3), "Information");

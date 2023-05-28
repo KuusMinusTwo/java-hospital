@@ -12,6 +12,7 @@ public class sidebar extends JPanel implements ActionListener{
     public static JButton homeBtn;
     public static JButton serviceBtn;
     public static JButton infoBtn;
+    public static JButton nurseBtn;
     public sidebar() {
         
         
@@ -23,7 +24,7 @@ public class sidebar extends JPanel implements ActionListener{
         setBorder(BorderFactory.createEmptyBorder(10, 0, 00, 0));
         
         JPanel navigation = new JPanel();
-        navigation.setLayout(new GridLayout(3, 1));
+        navigation.setLayout(new GridLayout(4, 1));
         
         homeBtn = createStyledButton("Нүүр хуудас");
         homeBtn.setName("homeBtn");
@@ -31,10 +32,13 @@ public class sidebar extends JPanel implements ActionListener{
         serviceBtn.setName("serviceBtn");
         infoBtn = createStyledButton("Мэдээлэл");
         infoBtn.setName("infoBtn");
+        nurseBtn = createStyledButton("Хариу оруулах");
+        nurseBtn.setName("nurseBtn");
 
         navigation.add(homeBtn);
         navigation.add(serviceBtn);
         navigation.add(infoBtn);
+        navigation.add(nurseBtn);
 
         timeTable timeTable = new timeTable();
         // timeTable.add(new JLabel("timeTable"));
@@ -81,6 +85,9 @@ public class sidebar extends JPanel implements ActionListener{
             break;
             case "infoBtn":
                 mainLayout.cardLayout.show(mainLayout.contentPanel, "Information");
+            break;
+            case "nurseBtn":
+                mainLayout.cardLayout.show(mainLayout.contentPanel, "Nurse");
             break;
         }
         
