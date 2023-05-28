@@ -20,15 +20,15 @@ public class userTestWindow extends JPanel{
         formPanel.setBackground(Color.WHITE);
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JLabel usernameLabel = new JLabel("Регистэр:");
+        JLabel usernameLabel = new JLabel("Регистер:");
         usernameLabel.setFont(new Font("Arial", Font.BOLD, 30));
         JTextField usernameField = new JTextField(15);
         usernameField.setMaximumSize(usernameField.getPreferredSize());
         Font font = new Font(usernameField.getFont().getName(), Font.PLAIN, 30);
         usernameField.setFont(font);
         usernameField.setMaximumSize(usernameField.getPreferredSize());
-        JLabel passwordLabel = new JLabel("Код:");
-        passwordLabel.setFont(new Font("Arial", Font.BOLD, 30));
+        JLabel passwordLabel = new JLabel("Шинжилгээний дугаар:");
+        passwordLabel.setFont(new Font("Arial", Font.BOLD, 20));
         JTextField passwordField = new JTextField();
         passwordField.setFont(font);
         font = new Font(passwordField.getFont().getName(), Font.PLAIN, 30);

@@ -79,8 +79,9 @@ public class serviceList extends JPanel {
         gbc.weightx = 1;
         gbc.insets = new Insets(10, 10, 0, 10); 
         gbc.anchor = GridBagConstraints.WEST;
+        jButton1.setFont(new Font(jButton1.getFont().getName(), Font.PLAIN, 20));
         panel.add(jButton1, gbc);
-        JButton jButton2= new JButton("Шинжилгээ");
+        JButton jButton2= new JButton("Үзлэг");
         jButton2.setName("uzleg");
         jButton2.addActionListener(treatmentTypeListener);
         jButton2.setPreferredSize(new Dimension(400, 60));
@@ -89,8 +90,9 @@ public class serviceList extends JPanel {
         gbc.weightx = 1;
         gbc.insets = new Insets(10, 10, 0, 10); 
         gbc.anchor = GridBagConstraints.WEST;
+        jButton2.setFont(new Font(jButton2.getFont().getName(), Font.PLAIN, 20));
         panel.add(jButton2, gbc);
-        JButton jButton3= new JButton("Шинжилгээ");
+        JButton jButton3= new JButton("Эмчилгээ");
         jButton3.addActionListener(treatmentTypeListener);
         jButton3.setName("emchilgee");
         jButton3.setPreferredSize(new Dimension(400, 60));
@@ -99,6 +101,7 @@ public class serviceList extends JPanel {
         gbc.weightx = 1;
         gbc.insets = new Insets(10, 10, 0, 10); 
         gbc.anchor = GridBagConstraints.WEST;
+        jButton3.setFont(new Font(jButton3.getFont().getName(), Font.PLAIN, 20));
         panel.add(jButton3, gbc);
         
 
