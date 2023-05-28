@@ -24,12 +24,29 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 public class HourTable extends JPanel {
+    
+    public static JComboBox<String> dropdownMenu;
+    public static JButton selectedTime;
+    ActionListener timeListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton source = (JButton) e.getSource();
+            String time=source.getName();
+            if(selectedTime.getName()!=time){
+                selectedTime.setBackground(Color.white);
+                selectedTime=source;
+                selectedTime.setBackground(Color.orange);
+            }
+            
+            
+        }
+    };
     public HourTable(){
         setLayout(new GridBagLayout());
 
         // Create the dropdown menu
         String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-        JComboBox<String> dropdownMenu = new JComboBox<>(daysOfWeek);
+        dropdownMenu = new JComboBox<>(daysOfWeek);
 
         // Set preferred size for the dropdown menu
         Dimension dropdownSize = new Dimension(200, 30);
@@ -48,7 +65,15 @@ public class HourTable extends JPanel {
 
         // Create and add buttons to the panel
         for (int i = 1; i <= 8; i++) {
+            
             JButton button = new JButton("Button " + i);
+            button.addActionListener(timeListener);
+            button.setName(Integer.toString(i));
+            button.setBackground(Color.white);
+            if(i==1){
+                selectedTime=button;
+                selectedTime.setBackground(Color.orange);
+            }
             gbc.gridx = (i - 1) % 2;
             gbc.gridy = (i - 1) / 2 + 1;
             gbc.anchor = GridBagConstraints.CENTER;

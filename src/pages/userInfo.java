@@ -7,6 +7,7 @@ import model.Database;
 import model.Patient;
 import model.Service;
 import pages.services.inspection;
+import widgets.HourTable;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +15,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class userInfo extends JPanel{
     private JTextField firstNameField;
@@ -130,8 +134,11 @@ public class userInfo extends JPanel{
                     String treatmentId =inspection.currentIndex;
 
                     Service service = new Service();
-                    service.servicedate = "2023-05-28";
-                    service.servicetime = 12;
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    service.servicedate = currentDateTime.format(dateFormatter);
+                    service.servicedate = HourTable.dropdownMenu.getSelectedItem().toString();
+                    service.servicetime = Integer.parseInt(HourTable.selectedTime.getName());
                     service.doctorid = 0;
                     service.patientid = Database.patientNametoPatientID(user.firstname, user.lastname, user.dateofbirth, user.age, user.register);
                     service.treatmentid = Integer.parseInt(treatmentId);
