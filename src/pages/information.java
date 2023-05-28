@@ -32,12 +32,12 @@ public class information extends JPanel{
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
         ImageIcon icon = new ImageIcon(getClass().getResource("..\\asset\\images\\Fam1.jpg")) ;
-        Image originalImage=icon.getImage().getScaledInstance(constant.width, constant.height, Image.SCALE_SMOOTH);
+        Image originalImage=icon.getImage().getScaledInstance(1250,800, Image.SCALE_SMOOTH);
         
         JLabel iconLabel = new JLabel(new ImageIcon(originalImage));
 
-        iconLabel.setPreferredSize(new Dimension(1250, 900));
-        this.add(iconLabel, BorderLayout.CENTER);
+        iconLabel.setPreferredSize(new Dimension(1250, 800));
+        
        
         JPanel aboutUs = new JPanel();
         aboutUs.setLayout(new BoxLayout(aboutUs, BoxLayout.Y_AXIS));
@@ -74,7 +74,9 @@ public class information extends JPanel{
 
         aboutUs.add(titleLabel);
         aboutUs.add(descriptionPanel);
+        aboutUs.setPreferredSize(new Dimension(-50, 100));
         add(aboutUs, BorderLayout.NORTH);
+        add(iconLabel, BorderLayout.NORTH);
         
     }
     
