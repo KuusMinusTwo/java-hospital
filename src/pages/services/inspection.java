@@ -19,24 +19,32 @@ import java.util.concurrent.TimeUnit;
 public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
 
-    public String status;
+    public static String status;
 
-    CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
-        // Perform some asynchronous task
-        System.out.println("Asynchronous task started...");
-        try {
-            TimeUnit.SECONDS.sleep(2); // Simulating a long-running task
-        } catch (InterruptedException e) {
-            
-            e.printStackTrace();
-        }
-        System.out.println("Asynchronous task completed.");
-        
-    });
     
-    public inspection(Vector <String> data) {
+    
+    public inspection(Vector <String> data){
         setLayout(new BorderLayout());
-
+        CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
+            // Perform some asynchronous task
+            System.out.println("Asynchronous task started...");
+            try {
+                TimeUnit.SECONDS.sleep(2); 
+                status="true";
+            } catch (InterruptedException e) {
+                
+                e.printStackTrace();
+            }
+            System.out.println("Asynchronous task completed.");
+            
+        });
+        try{
+            asyncTask.get();
+        }
+        catch(Exception e){
+            
+        }
+        
         
         setPreferredSize(new Dimension(300, HEIGHT));
         setBackground(Color.GRAY);
