@@ -52,6 +52,9 @@ public class inspectionResult extends JPanel{
         JLabel testDate = new JLabel("Үзүүлсэн огноо: " + data.get(7));
         testDate.setFont(new Font("Arial", Font.BOLD, 15));
         add(testDate);
+        JLabel status = new JLabel("Статус: " + data.get(6));
+        status.setFont(new Font("Arial", Font.BOLD, 15));
+        add(status);
 
         lName.setHorizontalAlignment(SwingConstants.RIGHT);
         age.setHorizontalAlignment(SwingConstants.RIGHT);
