@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import layout.mainLayout;
 import model.TreatmentType;
 import pages.userInfo;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +30,12 @@ public class treatmentInfo extends JPanel{
            
         }
     };
-    public treatmentInfo(){
+    public treatmentInfo(TreatmentType treatmentType){
+
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = toolkit.getScreenSize();
+        int width=screenSize.width;
+        int height=screenSize.height;
         
         setBackground(Color.white);
         
@@ -50,15 +57,15 @@ public class treatmentInfo extends JPanel{
         JPanel leftSide = new JPanel();
         leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.Y_AXIS));
         JPanel userPart=new JPanel();
-        userPart.setPreferredSize(new Dimension(800, 200));
+        userPart.setPreferredSize(new Dimension((width-1000), 200));
         userPart.setBackground(Color.BLUE);
         leftSide.add(userPart, BorderLayout.NORTH);
         JPanel treatmentPart=new JPanel();
-        treatmentPart.setPreferredSize(new Dimension(800, 300));
+        treatmentPart.setPreferredSize(new Dimension((width-1000), 300));
         treatmentPart.setBackground(Color.yellow);
         leftSide.add(treatmentPart, BorderLayout.NORTH);
         JPanel servicePart=new JPanel();
-        servicePart.setPreferredSize(new Dimension(800, 400));
+        servicePart.setPreferredSize(new Dimension((width-1000), 400));
         servicePart.setBackground(Color.pink);
         leftSide.add(servicePart, BorderLayout.NORTH);
 
