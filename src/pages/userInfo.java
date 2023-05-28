@@ -8,6 +8,8 @@ import model.Patient;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -81,12 +83,21 @@ public class userInfo extends JPanel{
         gbc.gridx = 1;
         add(registerField, gbc);
 
+        // Fail
+        JLabel failLabel = new JLabel("Та бүгдийг нь бүрэн зөв бөглөнө үү!");
+
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        add(failLabel, gbc);
+        failLabel.setVisible(false);
+        failLabel.setForeground(Color.RED);
+
         // Submit Button
         JButton submitButton = new JButton("Submit");
         submitButton.setPreferredSize(new Dimension(120, 30));
 
         gbc.gridx = 0;
-        gbc.gridy = 5;
+        gbc.gridy = 6;
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         add(submitButton, gbc);
@@ -94,12 +105,23 @@ public class userInfo extends JPanel{
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                if(firstNameField.getText().equals("") &&
+                    lastNameField.getText().equals("") &&
+                    dobField.getText().equals("") &&
+                    ageField.getText().equals("") &&
+                    registerField.getText().equals("")){
+                        failLabel.setVisible(true); // Make label visible when clicked
+                }
+                else failLabel.setVisible(false);
+
                 Patient user = new Patient();
                 user.firstname = firstNameField.getText();
                 user.lastname = lastNameField.getText();
                 user.dateofbirth  = dobField.getText();
                 user.age = Integer.parseInt(ageField.getText());
                 user.register = registerField.getText();
+                
                 user.Save();
 
                 // Save the input here, e.g., in a variable or data structure
