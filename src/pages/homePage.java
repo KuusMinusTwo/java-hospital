@@ -23,6 +23,7 @@ public class homePage extends JPanel{
             userTestWindow loginPanel = new userTestWindow();
            
             loginPanel.setPreferredSize(new Dimension(600, 270));
+            mainLayout.dialog.getContentPane().removeAll();
             mainLayout.dialog.getContentPane().add(loginPanel);
             mainLayout.dialog.pack();
             mainLayout.dialog.setLocationRelativeTo(null);

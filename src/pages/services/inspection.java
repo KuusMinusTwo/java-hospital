@@ -63,7 +63,7 @@ public class inspection extends JPanel implements ActionListener{
             
             temp.setName(data.get(i+1));
             i++;
-            if(i==0){
+            if(i==1){
                 selectedButton=temp;
                 temp.setBackground(Color.blue);
             }
@@ -101,11 +101,17 @@ public class inspection extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Get the source button that was clicked
         JButton source = (JButton) e.getSource();
         String id =source.getName();
         Vector<String> doctorNameID = new Vector<String>();
-        doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(id));
+        if(Database.hasDB){
+            doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(id));
+        }
+        else{
+            doctorNameID.add("khuslen");
+            doctorNameID.add("1");
+        }
+        
 
         String name=source.getName();
         if(selectedButton.getName()!=name){
