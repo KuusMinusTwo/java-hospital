@@ -63,9 +63,9 @@ public class treatmentInfo extends JPanel{
         treatmentPart.setBackground(Color.yellow);
         treatmentPart.add(new JLabel(treatment.treatmentname));
         leftSide.add(treatmentPart, BorderLayout.NORTH);
-        JPanel servicePart=new JPanel();
+        doctorPart servicePart=new doctorPart();
         servicePart.setPreferredSize(new Dimension((constant.width-1000), 400));
-        servicePart.setBackground(Color.pink);
+        
         leftSide.add(servicePart, BorderLayout.NORTH);
 
 
