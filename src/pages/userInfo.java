@@ -3,6 +3,7 @@ package pages;
 
 import javax.swing.*;
 
+import layout.mainLayout;
 import model.Database;
 import model.Patient;
 import model.Service;
@@ -26,6 +27,17 @@ public class userInfo extends JPanel{
     private JTextField dobField;
     private JTextField ageField;
     private JTextField registerField;
+    public void success(int id){
+        success loginPanel = new success(Integer.toString(id) );
+           
+            loginPanel.setPreferredSize(new Dimension(600, 600));
+            mainLayout.dialog.getContentPane().removeAll();
+            mainLayout.dialog.getContentPane().add(loginPanel);
+            mainLayout.dialog.pack();
+            mainLayout.dialog.setLocationRelativeTo(null);
+            mainLayout.dialog.setVisible(true);
+
+    }
 
     public userInfo() {
         setLayout(new GridBagLayout());
@@ -149,6 +161,12 @@ public class userInfo extends JPanel{
                     service.status = "Үүсгэсэн";
                     if(Database.hasDB){
                         int id=service.Save();
+                        if(id!=-1){
+                            success(id);
+                        }
+                    }
+                    else{
+                        success(-1);
                     }
                     
                 }
