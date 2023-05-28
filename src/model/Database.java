@@ -151,8 +151,8 @@ public class Database {
             
             boolean noquery = true;
             while(resultset.next()){
-                result.add(Integer.toString(resultset.getInt("EmployeeID")));
                 result.add(resultset.getString("FirstName"));
+                result.add(Integer.toString(resultset.getInt("EmployeeID")));
                 noquery = false;
             }
             if(noquery) {
@@ -281,5 +281,34 @@ public class Database {
             System.out.println("bolq bn");
             return 0;
         }  
+    }
+    public static Vector<String> doctIDtoDoctorInfo(int id){
+        Vector<String> result=new Vector<String>();
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from Doctor where EmployeeID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            
+            boolean noquery = true;
+            while(resultset.next()){
+                result.add(resultset.getString("FirstName"));
+                result.add(resultset.getString("LastName"));
+                result.add(resultset.getString("JobType"));
+                result.add(Integer.toString(resultset.getInt("Age")));
+                result.add(Integer.toString(resultset.getInt("Room")));
+                noquery = false;
+            }
+            if(noquery) {
+                System.out.println("Algoo");
+            }
+            return result;
+        }catch (Exception e){
+            System.out.println("Bolq bn");
+            return result;
+        }
     }
 }
