@@ -4,6 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import layout.constant;
 import layout.mainLayout;
@@ -54,14 +55,45 @@ public class treatmentInfo extends JPanel{
        
         JPanel leftSide = new JPanel();
         leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.Y_AXIS));
-        JPanel userPart=new JPanel();
-        userPart.setPreferredSize(new Dimension((constant.width-1000), 200));
-        userPart.setBackground(Color.BLUE);
-        leftSide.add(userPart, BorderLayout.NORTH);
+        
         JPanel treatmentPart=new JPanel();
-        treatmentPart.setPreferredSize(new Dimension((constant.width-1000), 300));
+        treatmentPart.setPreferredSize(new Dimension((constant.width-1000), 500));
         treatmentPart.setBackground(Color.yellow);
-        treatmentPart.add(new JLabel(treatment.treatmentname));
+
+        JLabel replay = new JLabel(treatment.treatmentname);
+        replay.setFont(new Font("Arial", Font.BOLD, 25));
+        add(replay);
+        JLabel price = new JLabel("Үнэ: "+treatment.treatmentdesc);
+        price.setFont(new Font("Arial", Font.BOLD, 23));
+        add(price);
+        add(treatmentPart);
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         leftSide.add(treatmentPart, BorderLayout.NORTH);
         doctorPart servicePart=new doctorPart();
         servicePart.setPreferredSize(new Dimension((constant.width-1000), 400));
@@ -73,5 +105,7 @@ public class treatmentInfo extends JPanel{
         add(leftSide, BorderLayout.CENTER);
         add(rightSide, BorderLayout.EAST);
         
+    }
+    private void add(TreatmentType treatment) {
     }
 }

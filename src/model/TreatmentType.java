@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import javax.swing.JLabel;
+
 public class TreatmentType {
     public String jobtype;
     public String treatmentname;
@@ -24,5 +26,7 @@ public class TreatmentType {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public void add(JLabel replay) {
     }
 }
