@@ -44,7 +44,7 @@ public class mainLayout extends JFrame {
         JPanel panel4 = new JPanel();
 
         nurse panel5=new nurse();
-        panel5.setPreferredSize(new Dimension(700, 300));
+        panel5.setPreferredSize(new Dimension(1000, 300));
         panel4.add(panel5);
 
         
