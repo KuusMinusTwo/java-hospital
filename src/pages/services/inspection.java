@@ -3,13 +3,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
     public static JButton homeBtn;
     public static JButton serviceBtn;
     public static JButton infoBtn;
-    public inspection() {
+    public inspection(Vector <String> data) {
         setLayout(new BorderLayout());
 
         
@@ -22,7 +23,7 @@ public class inspection extends JPanel implements ActionListener{
         menuJPanel.setPreferredSize(new Dimension(200, getHeight()));
         menuJPanel.setBackground(Color.GRAY);
         
-        homeBtn = createStyledButton("Нүүр хуудас");
+        homeBtn = createStyledButton(data.get(0));
         homeBtn.setName("homeBtn");
         serviceBtn = createStyledButton("Үйлчилгээ");
         serviceBtn.setName("serviceBtn");
@@ -77,11 +78,5 @@ public class inspection extends JPanel implements ActionListener{
         
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new inspection();
-            }
-        });
-    }
+    
 }

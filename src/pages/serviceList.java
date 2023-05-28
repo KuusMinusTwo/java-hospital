@@ -45,8 +45,8 @@ public class serviceList extends JPanel {
                 data.add("shinjilgee 2");
                 data.add("shinjilgee 3");
             }
-            
-            inspection inspection=new inspection();
+
+            inspection inspection=new inspection(data);
             mainLayout.contentPanel.add(inspection, "inspection");
             mainLayout.cardLayout.show(mainLayout.contentPanel, "inspection");
             }
