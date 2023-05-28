@@ -1,3 +1,7 @@
+import java.util.Vector;
+
+import java.util.Vector;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -7,16 +11,15 @@ import model.Patient;
 
 public class App {
     static mainLayout myApp;
+    static boolean hasDB = false;
     public static void main(String[] args) throws Exception {
         try{
-        // Database.init();
-        // Patient m = new Patient();
-        // m.firstname = "Батаа";
-        // m.lastname = "Ганаа";
-        // m.age = 19;
-        // m.dateofbirth = "1999-09-08";
-        // m.SavePatient();
-
+            if(hasDB){
+                Database.init();
+                var data = Database.treatmentSelect("uzleg");
+            }
+        
+        
         myApp=new mainLayout();
         SwingUtilities.invokeLater(() -> {
             myApp.setExtendedState(JFrame.MAXIMIZED_BOTH);
