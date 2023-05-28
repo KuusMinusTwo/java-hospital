@@ -10,7 +10,7 @@ import java.util.Vector;
 import pages.serviceList;
 
 public class Database {
-    public static boolean hasDB = true;
+    public static boolean hasDB = false;
     public static Connection conn;
     public static void init(){
         try {
