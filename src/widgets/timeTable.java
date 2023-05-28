@@ -7,5 +7,4 @@ public class timeTable extends JPanel{
     public timeTable(){
         add(new JLabel("timeTable1"));
     }
-    
 }

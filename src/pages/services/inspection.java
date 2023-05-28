@@ -39,6 +39,15 @@ public class inspection extends JPanel implements ActionListener{
 
         selectedButton=homeBtn;
         homeBtn.setBackground(Color.blue);
+
+        JPanel mainBody= new JPanel();
+        mainBody.setBackground(Color.white);
+
+        JPanel leftSide = new JPanel();
+        JPanel timeTable= new JPanel();
+        timeTable.setPreferredSize(new Dimension(getWidth(), 300));
+        // timeTable
+        // add(mainBody);
         
 
 

@@ -61,14 +61,17 @@ public class userTestWindow extends JPanel{
         });
 
         JPanel username=new JPanel(new GridLayout(1, 2));
+        username.setBackground(Color.white);
         username.add(usernameLabel);
         username.add(usernameField);
 
         JPanel password=new JPanel(new GridLayout(1, 2));
+        password.setBackground(Color.white);
         password.add(passwordLabel);
         password.add(passwordField);
 
         JPanel buttons=new JPanel(new GridLayout(1, 2));
+        buttons.setBackground(Color.white);
         
         buttons.add(backButton, BorderLayout.WEST);
         
@@ -88,8 +91,10 @@ public class userTestWindow extends JPanel{
         JLabel sentence = new JLabel("<html><div style='text-align: center;'>Регистрийн дугаар болон шилжилгээний дугаарыг оруулна уу</div></html>", SwingConstants.CENTER);
         sentence.setFont(new Font("Arial", Font.BOLD, 15));
         JPanel top=new JPanel(new GridLayout(2, 1));
+        top.setBackground(Color.white);
         top.add(title);
         top.add(sentence);
+
         add(top, BorderLayout.NORTH );
         add(formPanel, BorderLayout.CENTER);
 

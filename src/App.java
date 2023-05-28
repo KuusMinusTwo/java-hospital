@@ -11,10 +11,9 @@ import model.Patient;
 
 public class App {
     static mainLayout myApp;
-    static boolean hasDB = false;
     public static void main(String[] args) throws Exception {
         try{
-            if(hasDB){
+            if(Database.hasDB){
                 Database.init();
                 var data = Database.treatmentSelect("uzleg");
             }
