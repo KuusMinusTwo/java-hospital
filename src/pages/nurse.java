@@ -50,8 +50,9 @@ public class nurse extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Vector<String> data=new Vector<String>();
+                int n=-1;
                 if(Database.hasDB){
-                    Database.changingReport(Integer.parseInt(usernameField.getText()),passwordField.getText());
+                    n=Database.changingReport(Integer.parseInt(usernameField.getText()),passwordField.getText());
                 }
                 else{
                     data.add("УО02280410");
@@ -64,15 +65,16 @@ public class nurse extends JPanel {
                     data.add("Зүрх нь муудсан");
                 }
 
-                // mainLayout.dialog.setVisible(false);
-                // inspectionResult loginPanel = new inspectionResult(data);
+               
+                if(n==1) {successNurse loginPanel = new successNurse(Integer.toString(n));
             
-                // loginPanel.setPreferredSize(new Dimension(600, 270));
-                // mainLayout.dialog.getContentPane().removeAll();
-                // mainLayout.dialog.getContentPane().add(loginPanel);
-                // mainLayout.dialog.pack();
-                // mainLayout.dialog.setLocationRelativeTo(null);
-                // mainLayout.dialog.setVisible(true);
+                loginPanel.setPreferredSize(new Dimension(600, 270));
+                mainLayout.dialog.getContentPane().removeAll();
+                mainLayout.dialog.getContentPane().add(loginPanel);
+                mainLayout.dialog.pack();
+                mainLayout.dialog.setLocationRelativeTo(null);
+                mainLayout.dialog.setVisible(true);
+                }
             }
         });
 
