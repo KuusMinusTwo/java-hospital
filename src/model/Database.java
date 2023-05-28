@@ -48,7 +48,7 @@ public class Database {
                 result.add(resultset.getString("TreatmentDescription"));
                 result.add(Integer.toString(resultset.getInt("Price")));
                 result.add(resultset.getString("Status"));
-                result.add(resultset.getString("ServiceDate"));
+                result.add(resultset.getString("ServiceDateDay"));
                 result.add(resultset.getString("TreatmentReport"));
             }
             if(noquery) {
@@ -243,5 +243,43 @@ public class Database {
             System.out.println("bolq bn");
             return result;
         }
+    }
+    public static int patientNametoPatientID(String firstname, String lastname, String dob, int age, String register){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from Patient where FirstName = ? and LastName = ? and DateOfBirth = ? and Age = ? and Register = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, firstname);
+            preparedStatement.setString(2, lastname);
+            preparedStatement.setString(3, dob);
+            preparedStatement.setInt(4, age);
+            preparedStatement.setString(5, register);
+            resultset = preparedStatement.executeQuery();
+            
+            resultset.next();
+            return resultset.getInt("PatientID");
+        }catch (Exception e){
+            System.out.println("bolq bn");
+            return 0;
+        }
+    }
+    public static int treatmentPriceGetter(int id){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select Price from TreatmentType where TreatmentID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            resultset.next();
+            return resultset.getInt("Price");
+
+        }catch (Exception e){
+            System.out.println("bolq bn");
+            return 0;
+        }  
     }
 }
