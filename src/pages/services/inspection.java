@@ -45,9 +45,9 @@ public class inspection extends JPanel implements ActionListener{
                 
             }
             else{
-                treatment.category="";
+                treatment.category="bahahaha";
                 treatment.price=1000;
-                treatment.jobtype="";
+                treatment.jobtype="jolooch";
                 treatment.treatmentdesc="hahah";
                 treatment.treatmentname=maindata.get(1);
             }

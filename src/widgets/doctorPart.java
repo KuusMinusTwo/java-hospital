@@ -78,8 +78,10 @@ public class doctorPart extends JPanel {
                     data =Database.doctIDtoDoctorInfo(Integer.parseInt(doctors.get(i+1)) );
                 }
                 else{
+                    
     
-                }JPanel temp= new JPanel();
+                }
+                JPanel temp= new JPanel();
                 temp.setLayout(new BoxLayout(temp, BoxLayout.Y_AXIS));
 
                 JLabel templ=new JLabel(data.get(0));

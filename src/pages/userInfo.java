@@ -129,7 +129,9 @@ public class userInfo extends JPanel{
                     user.dateofbirth  = dobField.getText();
                     user.age = Integer.parseInt(ageField.getText());
                     user.register = registerField.getText();
-                    user.Save();
+                    if(Database.hasDB){
+                        user.Save();
+                    }
 
                     String treatmentId =inspection.currentIndex;
 
@@ -146,7 +148,9 @@ public class userInfo extends JPanel{
                     service.category = Database.treatmentNameGetter(Integer.parseInt(treatmentId));
                     service.price = Database.treatmentPriceGetter(Integer.parseInt(treatmentId));
                     service.status = "Үүсгэсэн";
-                    service.Save();
+                    if(Database.hasDB){
+                        service.Save();
+                    }
     
                 }
                 // Save the input here, e.g., in a variable or data structure
