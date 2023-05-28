@@ -21,15 +21,25 @@ public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
     public static String currentIndex;
     public static String status;
+
     public static TreatmentType treatment;
+    public static Vector<String> doctors;
     public static JPanel mainBody;
     public static Vector <String> maindata;
     public static CardLayout cardLayout;
     public  void asyncTask(){
         try {
-            
+            doctors = new Vector<String>();
             if(Database.hasDB){
-                // currentindex treatment id
+                doctors = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(currentIndex))));
+            }
+            else{
+                doctors.add("khuslen");
+                doctors.add("1");
+                doctors.add("adiya");
+                doctors.add("2");
+            }
+            if(Database.hasDB){
                 
                 treatment = Database.treatmentInfoForId(Integer.parseInt(currentIndex));
                 
@@ -97,7 +107,7 @@ public class inspection extends JPanel implements ActionListener{
         mainBody= new JPanel();
         mainBody.setLayout(cardLayout);
         
-        JPanel panel1=new treatmentInfo(treatment);
+        JPanel panel1=new treatmentInfo(treatment, doctors);
         
         mainBody.add(panel1, "panel1");
         cardLayout.show(mainBody, "panel1");
@@ -124,14 +134,16 @@ public class inspection extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JButton source = (JButton) e.getSource();
         String id =source.getName();
-        Vector<String> doctorNameID = new Vector<String>();
+        doctors = new Vector<String>();
         currentIndex=maindata.get(Integer.parseInt(id)*2+1);
         if(Database.hasDB){
-            doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(id)*2+1)));
+            doctors = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(id)*2+1)));
         }
         else{
-            doctorNameID.add("khuslen");
-            doctorNameID.add("1");
+            doctors.add("khuslen");
+            doctors.add("1");
+            doctors.add("adiya");
+            doctors.add("2");
         }
         if(Database.hasDB){
             treatment = Database.treatmentInfoForId(Integer.parseInt(currentIndex));
@@ -143,7 +155,7 @@ public class inspection extends JPanel implements ActionListener{
             treatment.treatmentdesc="hahah";
             treatment.treatmentname=maindata.get(Integer.parseInt(id)*2+1);
         }
-        JPanel temp=new treatmentInfo(treatment);
+        JPanel temp=new treatmentInfo(treatment, doctors);
         
         mainBody.add(temp, "panel"+(Integer.parseInt(id)*2+1));
         cardLayout.show(mainBody, "panel"+(Integer.parseInt(id)*2+1));

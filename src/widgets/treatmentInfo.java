@@ -32,7 +32,7 @@ public class treatmentInfo extends JPanel{
             mainLayout.dialog.setVisible(true);
         }
     };
-    public treatmentInfo(TreatmentType treatment){
+    public treatmentInfo(TreatmentType treatment, Vector<String> doctors){
 
         
         
@@ -99,7 +99,7 @@ public class treatmentInfo extends JPanel{
 
 
         leftSide.add(treatmentPart, BorderLayout.NORTH);
-        doctorPart servicePart=new doctorPart();
+        doctorPart servicePart=new doctorPart(doctors);
         servicePart.setPreferredSize(new Dimension((constant.width-1000), 400));
         
         leftSide.add(servicePart, BorderLayout.NORTH);
