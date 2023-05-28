@@ -19,37 +19,36 @@ import java.util.concurrent.TimeUnit;
 
 public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
-
+    public static int currentIndex;
     public static String status;
     public static TreatmentType treatment;
-    public static treatmentInfo mainBody;
+    public static JPanel mainBody;
     public static Vector <String> maindata;
+    public static CardLayout cardLayout;
+    public  void asyncTask(){
+        try {
+            
+            if(Database.hasDB){
+
+            }
+            else{
+                treatment.category="";
+                treatment.price=1000;
+                treatment.jobtype="";
+                treatment.treatmentdesc="hahah";
+                treatment.treatmentname=maindata.get(1);
+            }
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+        }
+    }
     
     public inspection(Vector <String> data){
         maindata=data;
         setLayout(new BorderLayout());
-        CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
-            // Perform some asynchronous task
-            System.out.println("Asynchronous task started...");
-            try {
-                TimeUnit.SECONDS.sleep(2); 
-                if(Database.hasDB){
-
-                }
-                else{
-                    treatment.category="";
-                    treatment.price=1000;
-                    treatment.jobtype="";
-                    treatment.treatmentdesc="hahah";
-                    treatment.treatmentname=data.get(1);
-                }
-            } catch (Exception e) {
-                
-                e.printStackTrace();
-            }
-            System.out.println("Asynchronous task completed.");
-            
-        });
+        
+        
        
         
         
@@ -84,14 +83,20 @@ public class inspection extends JPanel implements ActionListener{
         status="false";
         treatment=new TreatmentType();
         try{
-            asyncTask.get();
+            asyncTask();
         }
         catch(Exception e){
 
         }
         
-
-        mainBody=new treatmentInfo(treatment);
+        cardLayout=new CardLayout();
+        mainBody= new JPanel();
+        mainBody.setLayout(cardLayout);
+        
+        JPanel panel1=new treatmentInfo(treatment);
+        currentIndex=1;
+        mainBody.add(panel1, "panel1");
+        cardLayout.show(mainBody, "panel1");
         
 
         add(mainBody);
@@ -131,9 +136,12 @@ public class inspection extends JPanel implements ActionListener{
             treatment.price=1000;
             treatment.jobtype="";
             treatment.treatmentdesc="hahah";
-            treatment.treatmentname=maindata.get(Integer.parseInt(id));
+            treatment.treatmentname=maindata.get(Integer.parseInt(id)*2+1);
         }
-        mainBody=new treatmentInfo(treatment);
+        JPanel temp=new treatmentInfo(treatment);
+        currentIndex=Integer.parseInt(id)*2+1;
+        mainBody.add(temp, "panel"+(Integer.parseInt(id)*2+1));
+        cardLayout.show(mainBody, "panel"+(Integer.parseInt(id)*2+1));
 
         String name=source.getName();
         if(selectedButton.getName()!=name){
