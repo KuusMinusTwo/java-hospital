@@ -131,7 +131,32 @@ public class Database {
             if(noquery) {
                 System.out.println("Algoo");
             }
-            System.out.println(result);
+            return result;
+        }catch (Exception e){
+            System.out.println("pisdaaaa");
+            return result;
+        }
+    }
+    public static Vector<String> trtIDtoDoctorInfo(int id){
+        Vector<String> result=new Vector<String>();
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from TreatmentType inner join Doctor on Doctor.JobType = TreatmentType.JobType where TreatmentID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            
+            boolean noquery = true;
+            while(resultset.next()){
+                result.add(Integer.toString(resultset.getInt("EmployeeID")));
+                result.add(resultset.getString("FirstName"));
+                noquery = false;
+            }
+            if(noquery) {
+                System.out.println("Algoo");
+            }
             return result;
         }catch (Exception e){
             System.out.println("pisdaaaa");
@@ -164,6 +189,58 @@ public class Database {
         }catch (Exception e){
             System.out.println("pisdaaaa");
             return treatmentType;
+        }
+    }
+    public static Vector<String> doctIDtoServDate(int id){
+        Vector<String> result=new Vector<String>();
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "SELECT * FROM Service where DoctorID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            
+            boolean noquery = true;
+            while(resultset.next()){
+                result.add(resultset.getString("ServiceDateDay"));
+                result.add(resultset.getString("ServiceDateHour"));
+                noquery = false;
+            }
+            if(noquery) {
+                System.out.println("Algoo");
+            }
+            return result;
+        }catch (Exception e){
+            System.out.println("pisdaaaa");
+            return result;
+        }
+    }
+    public static Vector<String> servDatetoDoctID(String servicedateday, int servicedatehour){
+        Vector<String> result=new Vector<String>();
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from Service where ServiceDateDay = ? and ServiceDateHour = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, servicedateday);
+            preparedStatement.setInt(2, servicedatehour);
+            resultset = preparedStatement.executeQuery();
+            
+            boolean noquery = true;
+            while(resultset.next()){
+                result.add(Integer.toString(resultset.getInt("DoctorID")));
+                noquery = false;
+            }
+            if(noquery) {
+                System.out.println("Algoo");
+            }
+            return result;
+        }catch (Exception e){
+            System.out.println("pisdaaaa");
+            return result;
         }
     }
 }
