@@ -136,9 +136,8 @@ public class userInfo extends JPanel{
                     String treatmentId =inspection.currentIndex;
 
                     Service service = new Service();
-                    LocalDateTime currentDateTime = LocalDateTime.now();
-                    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                    service.servicedate = currentDateTime.format(dateFormatter);
+                    
+                    
                     service.servicedate = HourTable.dropdownMenu.getSelectedItem().toString();
                     service.servicetime = Integer.parseInt(HourTable.selectedTime.getName());
                     service.doctorid = 0;
@@ -149,9 +148,9 @@ public class userInfo extends JPanel{
                     service.price = Database.treatmentPriceGetter(Integer.parseInt(treatmentId));
                     service.status = "Үүсгэсэн";
                     if(Database.hasDB){
-                        service.Save();
+                        int id=service.Save();
                     }
-    
+                    
                 }
                 // Save the input here, e.g., in a variable or data structure
             }

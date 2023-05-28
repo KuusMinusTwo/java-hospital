@@ -19,6 +19,9 @@ import java.awt.Toolkit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -45,7 +48,19 @@ public class HourTable extends JPanel {
         setLayout(new GridBagLayout());
 
         // Create the dropdown menu
-        String[] daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+        Vector<String> daysOfWeek =new Vector<String>();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        
+        
+        for(int i=0;i<7;i++){
+            LocalDateTime tomorrowDateTime = currentDateTime.plus(i, ChronoUnit.DAYS);
+
+            
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String tomorrowDate = tomorrowDateTime.format(dateFormatter);
+            daysOfWeek.add(tomorrowDate);
+        }
         dropdownMenu = new JComboBox<>(daysOfWeek);
 
         // Set preferred size for the dropdown menu

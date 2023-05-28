@@ -13,7 +13,7 @@ public class Service {
     public int price;
     public String category;
     public String status;
-    public void Save(){
+    public int Save(){
         try{
             //database: Hospital, user: root, pwd: bayraaT1$DA
             Connection conn = Database.conn;
@@ -29,8 +29,11 @@ public class Service {
             pst.setInt(8, price);
             pst.setString(9, status);
             pst.execute();
+            return 1;
         }catch (Exception e){
+            
             e.printStackTrace();
+            return -1;
         }
     }
 }
