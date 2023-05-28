@@ -42,7 +42,7 @@ public class sidebar extends JPanel implements ActionListener{
 
         timeTable timeTable = new timeTable();
         // timeTable.add(new JLabel("timeTable"));
-        timeTable.setPreferredSize(new Dimension(getWidth(), 400));
+        timeTable.setPreferredSize(new Dimension(getWidth(), 350));
 
 
         add(navigation, BorderLayout.NORTH);
@@ -62,7 +62,7 @@ public class sidebar extends JPanel implements ActionListener{
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
         button.addActionListener(this);
-        button.setPreferredSize(new Dimension(getWidth(), 100));
+        button.setPreferredSize(new Dimension(getWidth(), 60));
         return button;
     }
 

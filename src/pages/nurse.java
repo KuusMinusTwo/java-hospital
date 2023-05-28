@@ -28,7 +28,7 @@ public class nurse extends JPanel {
         formPanel.setBackground(Color.WHITE);
         formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JLabel usernameLabel = new JLabel("Код:");
+        JLabel usernameLabel = new JLabel("Шинжилгээний дугаар:");
         usernameLabel.setFont(new Font("Arial", Font.BOLD, 30));
         JTextField usernameField = new JTextField(15);
         usernameField.setMaximumSize(usernameField.getPreferredSize());

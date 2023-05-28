@@ -81,7 +81,7 @@ public class HourTable extends JPanel {
         // Create and add buttons to the panel
         for (int i = 1; i <= 8; i++) {
             
-            JButton button = new JButton("Button " + i);
+            JButton button = new JButton(""+(i+10)%12 + " цаг");
             button.addActionListener(timeListener);
             button.setName(Integer.toString(i));
             button.setBackground(Color.white);
