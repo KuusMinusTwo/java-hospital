@@ -18,7 +18,7 @@ public class App {
             constant.run();
             if(Database.hasDB){
                 Database.init();
-                Database.trtIDtoDoctorInfo(4);
+                
             }
         
         myApp=new mainLayout();

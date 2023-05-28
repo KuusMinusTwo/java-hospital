@@ -10,7 +10,7 @@ import java.util.Vector;
 import pages.serviceList;
 
 public class Database {
-    public static boolean hasDB = false;
+    public static boolean hasDB = true;
     public static Connection conn;
     public static void init(){
         try {
@@ -331,5 +331,22 @@ public class Database {
             System.out.println("bolq bn");
             return 0;
         }
+    }
+    public static int changingReport(int serviceid, String report){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "update Service set TreatmentReport = ? where ServiceID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, report);
+            preparedStatement.setInt(2, serviceid);
+            preparedStatement.executeUpdate();
+            return 1;
+
+        }catch (Exception e){
+            System.out.println("bolq bn");
+            return 0;
+        }  
     }
 }
