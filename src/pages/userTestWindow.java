@@ -2,10 +2,12 @@ package pages;
 import javax.swing.*;
 
 import layout.mainLayout;
+import model.Database;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class userTestWindow extends JPanel{
     public userTestWindow() {
@@ -47,7 +49,21 @@ public class userTestWindow extends JPanel{
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                Vector<String> data=Vector<String>();
+                if(Database.hasDB){
+                    data = Database.inspectionResult(1, "УО02280410");
+                }
+                else{
+                    data.add("УО02280410");
+                    data.add("Баяржавхлан");
+                    data.add("Зүрхний үзлэг");
+                    data.add("Зүрхний үзлэгийг төхөөрөмжөөр нарийн үзэх");
+                    data.add("200000");
+                    data.add("Эмчилсэн");
+                    data.add("2013-03-07");
+                    data.add("Зүрх нь муудсан");
+                }
+
                 mainLayout.dialog.setVisible(false);
                 inspectionResult loginPanel = new inspectionResult();
             

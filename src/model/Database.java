@@ -10,7 +10,7 @@ import java.util.Vector;
 import pages.serviceList;
 
 public class Database {
-    public static boolean hasDB = false;
+    public static boolean hasDB = true;
     public static Connection conn;
     public static void init(){
         try {
@@ -25,12 +25,13 @@ public class Database {
             e.printStackTrace();
         };
     }
-    public static void inspectionResult(String reg, int id){
+    public static Vector<String> inspectionResult(int id, String reg){
+        Vector<String> result=new Vector<String>();
         try{
             //database: Hospital, user: root, pwd: bayraaT1$DA
             ResultSet resultset = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select * from Service where (select Register from Patient where PatientID = (select patientid from Service where ServiceID = ?)) = ? AND ServiceID = ?;";
+            String sql = "select * from Service inner join TreatmentType on TreatmentType.TreatmentID = Service.TreatmentID where (select Register from Patient where PatientID = (select patientid from Service where ServiceID = ?)) = ? AND ServiceID = ?;";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             preparedStatement.setString(2, reg);
@@ -40,21 +41,27 @@ public class Database {
             boolean noquery = true;
             while(resultset.next()){
                 noquery = false;
-                System.out.println(resultset.getInt("ServiceID") + " " + resultset.getString("ServiceDate") + " " + 
-                doctorIDGetter(resultset.getInt("DoctorID"))  + " " +  resultset.getInt("PatientID") + " " + resultset.getInt("TreatmentID") +
-                " " + resultset.getString("TreatmentReport") + " " + resultset.getString("Category") + " " + resultset.getInt("Price")
-                + " " + resultset.getString("Status")
-                );
+                result.add(reg);
+                result.add(patientNameGetter(resultset.getInt("PatientID")));
+                result.add(doctorNameGetter(resultset.getInt("DoctorID")));
+                result.add(treatmentNameGetter(resultset.getInt("TreatmentID")));
+                result.add(resultset.getString("TreatmentDescription"));
+                result.add(Integer.toString(resultset.getInt("Price")));
+                result.add(resultset.getString("Status"));
+                result.add(resultset.getString("ServiceDate"));
+                result.add(resultset.getString("TreatmentReport"));
             }
             if(noquery) {
                 System.out.println("Algoo");
             }
+            return result;
 
         }catch (Exception e){
             System.out.println("pisdaa");
+            return result;
         }
     }
-    public static String doctorIDGetter(int id){
+    public static String doctorNameGetter(int id){
         try{
             //database: Hospital, user: root, pwd: bayraaT1$DA
             ResultSet resultset = null;
@@ -63,13 +70,47 @@ public class Database {
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setInt(1, id);
             resultset = preparedStatement.executeQuery();
+            resultset.next();
             return resultset.getString("Firstname");
 
         }catch (Exception e){
             System.out.println("pisdaa");
             return "";
-        }
-        
+        }  
+    }
+    public static String patientNameGetter(int id){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select FirstName from Patient where PatientID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            resultset.next();
+            return resultset.getString("FirstName");
+
+        }catch (Exception e){
+            System.out.println("pisdaa");
+            return "";
+        }  
+    }
+    public static String treatmentNameGetter(int id){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select TreatmentName from TreatmentType where TreatmentID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            resultset.next();
+            return resultset.getString("TreatmentName");
+
+        }catch (Exception e){
+            System.out.println("pisdaa");
+            return "";
+        }  
     }
     public static Vector<String> treatmentSelect(String category){
         Vector<String> result=new Vector<String>();
@@ -95,6 +136,34 @@ public class Database {
         }catch (Exception e){
             System.out.println("pisdaaaa");
             return result;
+        }
+    }
+    public static TreatmentType treatmentInfoForId(int id){
+        TreatmentType treatmentType = new TreatmentType();
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from TreatmentType where TreatmentID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultset = preparedStatement.executeQuery();
+            boolean noquery = true;
+            while(resultset.next()){
+                treatmentType.jobtype = resultset.getString("JobType");
+                treatmentType.treatmentname = resultset.getString("TreatmentName");
+                treatmentType.treatmentdesc = resultset.getString("TreatmentDescription");
+                treatmentType.category = resultset.getString("Category");
+                treatmentType.price = resultset.getInt("Price");
+                noquery = false;
+            }
+            if(noquery) {
+                System.out.println("Algoo");
+            }
+            return treatmentType;
+        }catch (Exception e){
+            System.out.println("pisdaaaa");
+            return treatmentType;
         }
     }
 }
