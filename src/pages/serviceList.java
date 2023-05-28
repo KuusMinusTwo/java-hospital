@@ -38,7 +38,7 @@ public class serviceList extends JPanel {
             Vector<String> data= new Vector<String>();
             
             if(Database.hasDB) {
-                data = Database.treatmentSelect(selectedOption);
+                data = Database.treatmentSelect(source.getName());
             }
             else{
                 data.add("shinjilgee 1");
@@ -68,6 +68,7 @@ public class serviceList extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
 
         JButton jButton1= new JButton("Шинжилгээ");
+        jButton1.setName("shinjilgee");
         jButton1.addActionListener(treatmentTypeListener);
         jButton1.setPreferredSize(new Dimension(400, 60));
         gbc.gridx = 0;
@@ -77,6 +78,7 @@ public class serviceList extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         panel.add(jButton1, gbc);
         JButton jButton2= new JButton("Шинжилгээ");
+        jButton2.setName("uzleg");
         jButton2.addActionListener(treatmentTypeListener);
         jButton2.setPreferredSize(new Dimension(400, 60));
         gbc.gridx = 1;
@@ -87,6 +89,7 @@ public class serviceList extends JPanel {
         panel.add(jButton2, gbc);
         JButton jButton3= new JButton("Шинжилгээ");
         jButton3.addActionListener(treatmentTypeListener);
+        jButton3.setName("emchilgee");
         jButton3.setPreferredSize(new Dimension(400, 60));
         gbc.gridx = 2;
         gbc.gridy = 0;
