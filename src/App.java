@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.xml.crypto.Data;
 
 import layout.mainLayout;
 import model.Database;
@@ -15,9 +16,8 @@ public class App {
         try{
             if(Database.hasDB){
                 Database.init();
-                var data = Database.treatmentSelect("uzleg");
+                Database.trtIDtoDoctorInfo(4);
             }
-        
         
         myApp=new mainLayout();
         SwingUtilities.invokeLater(() -> {

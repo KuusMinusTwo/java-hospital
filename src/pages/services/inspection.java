@@ -3,6 +3,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import layout.mainLayout;
+import model.Database;
 import model.TreatmentType;
 import pages.userInfo;
 import widgets.treatmentInfo;
@@ -51,7 +52,7 @@ public class inspection extends JPanel implements ActionListener{
         setBorder(BorderFactory.createEmptyBorder(10, 0, 00, 0));
         JPanel rightside = new JPanel();
         JPanel menuJPanel = new JPanel();
-        menuJPanel.setLayout(new GridLayout(data.size(), 1));
+        menuJPanel.setLayout(new GridLayout(data.size()/2, 1));
         menuJPanel.setPreferredSize(new Dimension(200, 100*data.size()));
         rightside.setPreferredSize(new Dimension(200, getHeight()));
         menuJPanel.setBackground(Color.GRAY);
@@ -60,7 +61,8 @@ public class inspection extends JPanel implements ActionListener{
         for(int i=0;i<data.size();i++){
             temp=createStyledButton(data.get(i));
             
-            temp.setName("button"+i);
+            temp.setName(data.get(i+1));
+            i++;
             if(i==0){
                 selectedButton=temp;
                 temp.setBackground(Color.blue);
@@ -101,6 +103,10 @@ public class inspection extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         // Get the source button that was clicked
         JButton source = (JButton) e.getSource();
+        String id =source.getName();
+        Vector<String> doctorNameID = new Vector<String>();
+        doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(id));
+
         String name=source.getName();
         if(selectedButton.getName()!=name){
             selectedButton.setBackground(Color.GRAY);
