@@ -9,6 +9,7 @@ import model.Patient;
 import model.Service;
 import pages.services.inspection;
 import widgets.HourTable;
+import widgets.doctorPart;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -152,7 +153,7 @@ public class userInfo extends JPanel{
                     
                     service.servicedate = HourTable.dropdownMenu.getSelectedItem().toString();
                     service.servicetime = Integer.parseInt(HourTable.selectedTime.getName());
-                    service.doctorid = 0;
+                    service.doctorid = Integer.parseInt(doctorPart.selectedDoc.getName()) ;
                     service.patientid = Database.patientNametoPatientID(user.firstname, user.lastname, user.dateofbirth, user.age, user.register);
                     service.treatmentid = Integer.parseInt(treatmentId);
                     service.treatmentreport = "";
