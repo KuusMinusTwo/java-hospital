@@ -21,30 +21,36 @@ public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
 
     public static String status;
-
-    
+    public static TreatmentType treatment;
+    public static treatmentInfo mainBody;
+    public static Vector <String> maindata;
     
     public inspection(Vector <String> data){
+        maindata=data;
         setLayout(new BorderLayout());
-        // CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
-        //     // Perform some asynchronous task
-        //     System.out.println("Asynchronous task started...");
-        //     try {
-        //         TimeUnit.SECONDS.sleep(2); 
-        //         status="true";
-        //     } catch (InterruptedException e) {
-                
-        //         e.printStackTrace();
-        //     }
-        //     System.out.println("Asynchronous task completed.");
-            
-        // });
-        // try{
-        //     asyncTask.get();
-        // }
-        // catch(Exception e){
+        CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
+            // Perform some asynchronous task
+            System.out.println("Asynchronous task started...");
+            try {
+                TimeUnit.SECONDS.sleep(2); 
+                if(Database.hasDB){
 
-        // }
+                }
+                else{
+                    treatment.category="";
+                    treatment.price=1000;
+                    treatment.jobtype="";
+                    treatment.treatmentdesc="hahah";
+                    treatment.treatmentname=data.get(1);
+                }
+            } catch (Exception e) {
+                
+                e.printStackTrace();
+            }
+            System.out.println("Asynchronous task completed.");
+            
+        });
+       
         
         
         setPreferredSize(new Dimension(300, HEIGHT));
@@ -61,7 +67,7 @@ public class inspection extends JPanel implements ActionListener{
         for(int i=0;i<data.size();i++){
             temp=createStyledButton(data.get(i));
             
-            temp.setName(data.get(i+1));
+            temp.setName(Integer.toString(i/2));
             i++;
             if(i==1){
                 selectedButton=temp;
@@ -76,10 +82,16 @@ public class inspection extends JPanel implements ActionListener{
         add(rightside, BorderLayout.EAST);
        
         status="false";
+        treatment=new TreatmentType();
+        try{
+            asyncTask.get();
+        }
+        catch(Exception e){
 
-        TreatmentType treatment=new TreatmentType();
+        }
+        
 
-        treatmentInfo mainBody=new treatmentInfo(treatment);
+        mainBody=new treatmentInfo(treatment);
         
 
         add(mainBody);
@@ -105,13 +117,23 @@ public class inspection extends JPanel implements ActionListener{
         String id =source.getName();
         Vector<String> doctorNameID = new Vector<String>();
         if(Database.hasDB){
-            doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(id));
+            doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(id)*2+1)));
         }
         else{
             doctorNameID.add("khuslen");
             doctorNameID.add("1");
         }
-        
+        if(Database.hasDB){
+
+        }
+        else{
+            treatment.category="";
+            treatment.price=1000;
+            treatment.jobtype="";
+            treatment.treatmentdesc="hahah";
+            treatment.treatmentname=maindata.get(Integer.parseInt(id));
+        }
+        mainBody=new treatmentInfo(treatment);
 
         String name=source.getName();
         if(selectedButton.getName()!=name){

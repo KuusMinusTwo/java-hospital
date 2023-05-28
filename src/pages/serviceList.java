@@ -42,11 +42,11 @@ public class serviceList extends JPanel {
             }
             else{
                 data.add("shinjilgee 1");
+                data.add("1");
                 data.add("shinjilgee 2");
+                data.add("2");
                 data.add("shinjilgee 3");
-                data.add("shinjilgee 1");
-                data.add("shinjilgee 2");
-                data.add("shinjilgee 3");
+                data.add("3");
             }
 
             inspection inspection=new inspection(data);

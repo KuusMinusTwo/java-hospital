@@ -29,10 +29,9 @@ public class treatmentInfo extends JPanel{
             mainLayout.dialog.pack();
             mainLayout.dialog.setLocationRelativeTo(null);
             mainLayout.dialog.setVisible(true);
-           
         }
     };
-    public treatmentInfo(TreatmentType treatmentType){
+    public treatmentInfo(TreatmentType treatment){
 
         
         
@@ -62,6 +61,7 @@ public class treatmentInfo extends JPanel{
         JPanel treatmentPart=new JPanel();
         treatmentPart.setPreferredSize(new Dimension((constant.width-1000), 300));
         treatmentPart.setBackground(Color.yellow);
+        treatmentPart.add(new JLabel(treatment.treatmentname));
         leftSide.add(treatmentPart, BorderLayout.NORTH);
         JPanel servicePart=new JPanel();
         servicePart.setPreferredSize(new Dimension((constant.width-1000), 400));
