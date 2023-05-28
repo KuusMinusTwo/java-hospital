@@ -44,12 +44,7 @@ public class doctorPart extends JPanel {
             JButton source = (JButton) e.getSource();
             String id=source.getName();
             if(selectedDoc.getName()!=id){
-                if(Database.hasDB){
-
-                }
-                else{
-    
-                }
+                
                 selectedDoc.setBackground(Color.gray);
                 selectedDoc=source;
                 selectedDoc.setBackground(Color.blue);
@@ -78,8 +73,39 @@ public class doctorPart extends JPanel {
                     selectedDoc.setBackground(Color.BLUE);
                 }
                 navPanel.add(button1, BorderLayout.NORTH);
-                JPanel temp= new JPanel();
-                temp.add(new JLabel("Card "+doctors.get(i+1)));
+                Vector<String> data=new Vector<String>();
+                if(Database.hasDB){
+                    data =Database.doctIDtoDoctorInfo(Integer.parseInt(doctors.get(i+1)) );
+                }
+                else{
+    
+                }JPanel temp= new JPanel();
+                temp.setLayout(new BoxLayout(temp, BoxLayout.Y_AXIS));
+
+                JLabel templ=new JLabel(data.get(0));
+                templ.setFont(new Font(templ.getFont().getName(), Font.PLAIN, 20));
+                temp.add( templ, BorderLayout.NORTH);
+                
+
+                templ=new JLabel(data.get(1));
+                templ.setFont(new Font(templ.getFont().getName(), Font.PLAIN, 20));
+                temp.add( templ, BorderLayout.NORTH);
+
+                templ=new JLabel(data.get(2));
+                templ.setFont(new Font(templ.getFont().getName(), Font.PLAIN, 20));
+                temp.add( templ, BorderLayout.NORTH);
+               
+
+                templ=new JLabel(data.get(3));
+                templ.setFont(new Font(templ.getFont().getName(), Font.PLAIN, 20));
+                temp.add( templ, BorderLayout.NORTH);
+                
+                
+                templ=new JLabel(data.get(4));
+                templ.setFont(new Font(templ.getFont().getName(), Font.PLAIN, 20));
+                temp.add( templ, BorderLayout.NORTH);
+
+
                 contentPanel.add(temp, "Card "+doctors.get(i+1));
                 i++;
             }
@@ -121,7 +147,7 @@ public class doctorPart extends JPanel {
         button.setBackground(Color.GRAY);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
-        button.setPreferredSize(new Dimension(200, 100));
+        button.setPreferredSize(new Dimension(200, 70));
         button.addActionListener(doctorListener);
         return button;
     }

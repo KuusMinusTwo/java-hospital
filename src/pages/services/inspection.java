@@ -31,7 +31,7 @@ public class inspection extends JPanel implements ActionListener{
         try {
             doctors = new Vector<String>();
             if(Database.hasDB){
-                doctors = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(currentIndex))));
+                doctors = Database.trtIDtoDoctorInfo(Integer.parseInt(currentIndex));
             }
             else{
                 doctors.add("khuslen");
