@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
-    public static int currentIndex;
+    public static String currentIndex;
     public static String status;
     public static TreatmentType treatment;
     public static JPanel mainBody;
@@ -94,7 +94,7 @@ public class inspection extends JPanel implements ActionListener{
         mainBody.setLayout(cardLayout);
         
         JPanel panel1=new treatmentInfo(treatment);
-        currentIndex=1;
+        currentIndex=maindata.get(1);
         mainBody.add(panel1, "panel1");
         cardLayout.show(mainBody, "panel1");
         
@@ -139,7 +139,7 @@ public class inspection extends JPanel implements ActionListener{
             treatment.treatmentname=maindata.get(Integer.parseInt(id)*2+1);
         }
         JPanel temp=new treatmentInfo(treatment);
-        currentIndex=Integer.parseInt(id)*2+1;
+        currentIndex=maindata.get(Integer.parseInt(id)*2+1);
         mainBody.add(temp, "panel"+(Integer.parseInt(id)*2+1));
         cardLayout.show(mainBody, "panel"+(Integer.parseInt(id)*2+1));
 

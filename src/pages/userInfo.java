@@ -3,7 +3,10 @@ package pages;
 
 import javax.swing.*;
 
+import model.Database;
 import model.Patient;
+import model.Service;
+import pages.services.inspection;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -106,24 +109,39 @@ public class userInfo extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(firstNameField.getText().equals("") &&
-                    lastNameField.getText().equals("") &&
-                    dobField.getText().equals("") &&
-                    ageField.getText().equals("") &&
+                if(firstNameField.getText().equals("") ||
+                    lastNameField.getText().equals("") ||
+                    dobField.getText().equals("") ||
+                    ageField.getText().equals("") ||
                     registerField.getText().equals("")){
                         failLabel.setVisible(true); // Make label visible when clicked
                 }
-                else failLabel.setVisible(false);
+                else {
+                    failLabel.setVisible(false);
 
-                Patient user = new Patient();
-                user.firstname = firstNameField.getText();
-                user.lastname = lastNameField.getText();
-                user.dateofbirth  = dobField.getText();
-                user.age = Integer.parseInt(ageField.getText());
-                user.register = registerField.getText();
-                
-                user.Save();
+                    Patient user = new Patient();
+                    user.firstname = firstNameField.getText();
+                    user.lastname = lastNameField.getText();
+                    user.dateofbirth  = dobField.getText();
+                    user.age = Integer.parseInt(ageField.getText());
+                    user.register = registerField.getText();
+                    user.Save();
 
+                    String treatmentId =inspection.currentIndex;
+
+                    Service service = new Service();
+                    service.servicedate = "2023-05-28";
+                    service.servicetime = 12;
+                    service.doctorid = 0;
+                    service.patientid = Database.patientNametoPatientID(user.firstname, user.lastname, user.dateofbirth, user.age, user.register);
+                    service.treatmentid = Integer.parseInt(treatmentId);
+                    service.treatmentreport = "";
+                    service.category = Database.treatmentNameGetter(Integer.parseInt(treatmentId));
+                    service.price = Database.treatmentPriceGetter(Integer.parseInt(treatmentId));
+                    service.status = "Үүсгэсэн";
+                    service.Save();
+    
+                }
                 // Save the input here, e.g., in a variable or data structure
             }
         });

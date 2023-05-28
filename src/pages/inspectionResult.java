@@ -32,24 +32,24 @@ public class inspectionResult extends JPanel{
         
         left.setLayout(new GridLayout(3, 2));
 
-        JLabel fName = new JLabel("Овог: Ганхуяг");
+        JLabel fName = new JLabel("Эмч: " + data.get(2));
         fName.setFont(new Font("Arial", Font.BOLD, 23));
         add(fName);
-        JLabel lName = new JLabel("Нэр: Мөнх-Оргил");
+        JLabel lName = new JLabel("Нэр: "+ data.get(1));
         lName.setFont(new Font("Arial", Font.BOLD, 23));
         add(lName);
         
-        JLabel register = new JLabel("Регистер: УЖ03261631");
+        JLabel register = new JLabel("Регистер: " + data.get(0));
         register.setFont(new Font("Arial", Font.BOLD, 23));
         add(register);
         
-        JLabel age = new JLabel("Нас: 20");
+        JLabel age = new JLabel("Үнэ: " + data.get(5));
         age.setFont(new Font("Arial", Font.BOLD, 23));
         add(age);
-        JLabel testGroup = new JLabel("Шинжилгээ: Цусны шинжилгээ");
+        JLabel testGroup = new JLabel("Шинжилгээ: "+ data.get(3));
         testGroup.setFont(new Font("Arial", Font.BOLD, 15));
         add(testGroup);
-        JLabel testDate = new JLabel("Огноо: 2023.05.25");
+        JLabel testDate = new JLabel("Үзүүлсэн огноо: " + data.get(7));
         testDate.setFont(new Font("Arial", Font.BOLD, 15));
         add(testDate);
 
@@ -79,7 +79,7 @@ public class inspectionResult extends JPanel{
         Color commentColor = new Color(88, 214, 141); // Color code for green
         comment.setBackground(commentColor);
         comment.setPreferredSize(new Dimension(550, 100));
-        JLabel testComment = new JLabel("<html>WBC- Цагаан эс,RBC- Улаан эс,PLT- Ялтас эc,HGB- Гемоглобин,<br>HCT- Гематокрит,MCV- Улаан эсийн дундаж эзэлхүүн (80-100fl) <br>нормоцит, макроцит, микроцит</html>");
+        JLabel testComment = new JLabel("<html>"+data.get(8)+"</html>");
         testComment.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 17));
         add(testComment);
         comment.add(testComment);
