@@ -51,8 +51,8 @@ public class userTestWindow extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 Vector<String> data=new Vector<String>();
                 if(Database.hasDB){
-                    data = Database.inspectionResult(1, "УО02280410");
-                    // data = Database.inspectionResult(Integer.parseInt(passwordField.getText()), usernameField.getText());
+                    // data = Database.inspectionResult(1, "УО02280410");
+                    data = Database.inspectionResult(Integer.parseInt(passwordField.getText()), usernameField.getText());
                 }
                 else{
                     data.add("УО02280410");
