@@ -64,12 +64,12 @@ public class treatmentInfo extends JPanel{
         replay.setPreferredSize(new Dimension(200, 100)); // Adjust the preferred size
         treatmentPart.add(replay); 
         
-        JLabel price = new JLabel("Үнэ: "+treatment.treatmentdesc, SwingConstants.RIGHT);
+        JLabel price = new JLabel("Үнэ: "+treatment.price, SwingConstants.RIGHT);
         price.setFont(new Font("Arial", Font.BOLD, 25));
         price.setPreferredSize(new Dimension(200, 100)); // Adjust the preferred size
         treatmentPart.add(price);
 
-        JLabel disc = new JLabel("<html>WBC- Цагаан эс,RBC- Улаан эс,PLT- Ялтас эс,<br>HGB- Гемоглобин,HCT- Гематокрит,MCV- Улаан<br> эсийн дундаж эзэлхүүн (80-100fl) нормоцит,<br> макроцит, микроцит,MCH- Улаан эсэд ноогдох<br> гемоглобины агууламж (26-32pg) өнгө<br> илтгэгчийг заадаг.</HTML>", SwingConstants.CENTER);
+        JLabel disc = new JLabel("<html>"+treatment.treatmentdesc+"</HTML>", SwingConstants.CENTER);
         disc.setFont(new Font("Arial", Font.BOLD, 19));
         disc.setPreferredSize(new Dimension(500, 400)); // Adjust the preferred size
         treatmentPart.add(disc);

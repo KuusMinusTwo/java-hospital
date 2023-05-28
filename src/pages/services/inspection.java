@@ -29,7 +29,10 @@ public class inspection extends JPanel implements ActionListener{
         try {
             
             if(Database.hasDB){
-
+                // currentindex treatment id
+                
+                treatment = Database.treatmentInfoForId(Integer.parseInt(currentIndex));
+                
             }
             else{
                 treatment.category="";
@@ -82,6 +85,7 @@ public class inspection extends JPanel implements ActionListener{
        
         status="false";
         treatment=new TreatmentType();
+        currentIndex=maindata.get(1);
         try{
             asyncTask();
         }
@@ -94,7 +98,7 @@ public class inspection extends JPanel implements ActionListener{
         mainBody.setLayout(cardLayout);
         
         JPanel panel1=new treatmentInfo(treatment);
-        currentIndex=maindata.get(1);
+        
         mainBody.add(panel1, "panel1");
         cardLayout.show(mainBody, "panel1");
         
@@ -121,6 +125,7 @@ public class inspection extends JPanel implements ActionListener{
         JButton source = (JButton) e.getSource();
         String id =source.getName();
         Vector<String> doctorNameID = new Vector<String>();
+        currentIndex=maindata.get(Integer.parseInt(id)*2+1);
         if(Database.hasDB){
             doctorNameID = Database.trtIDtoDoctorInfo(Integer.parseInt(maindata.get(Integer.parseInt(id)*2+1)));
         }
@@ -129,7 +134,7 @@ public class inspection extends JPanel implements ActionListener{
             doctorNameID.add("1");
         }
         if(Database.hasDB){
-
+            treatment = Database.treatmentInfoForId(Integer.parseInt(currentIndex));
         }
         else{
             treatment.category="";
@@ -139,7 +144,7 @@ public class inspection extends JPanel implements ActionListener{
             treatment.treatmentname=maindata.get(Integer.parseInt(id)*2+1);
         }
         JPanel temp=new treatmentInfo(treatment);
-        currentIndex=maindata.get(Integer.parseInt(id)*2+1);
+        
         mainBody.add(temp, "panel"+(Integer.parseInt(id)*2+1));
         cardLayout.show(mainBody, "panel"+(Integer.parseInt(id)*2+1));
 

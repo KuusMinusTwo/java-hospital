@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 public class HourTable extends JPanel {
     public HourTable(){
         setBackground(Color.black);
+            
     
     }
     
