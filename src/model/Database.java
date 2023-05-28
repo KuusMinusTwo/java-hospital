@@ -337,7 +337,7 @@ public class Database {
             //database: Hospital, user: root, pwd: bayraaT1$DA
             ResultSet resultset = null;
             PreparedStatement preparedStatement = null;
-            String sql = "update Service set TreatmentReport = ? where ServiceID = ?;";
+            String sql = "update Service set TreatmentReport = ?, Status = 'Дүгнэсэн' where ServiceID = ?;";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, report);
             preparedStatement.setInt(2, serviceid);
