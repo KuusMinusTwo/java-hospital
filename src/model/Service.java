@@ -29,7 +29,7 @@ public class Service {
             pst.setInt(8, price);
             pst.setString(9, status);
             pst.execute();
-            return 1;
+            return Database.servInfotoServID(servicedate,servicetime,doctorid,patientid,treatmentid);
         }catch (Exception e){
             
             e.printStackTrace();

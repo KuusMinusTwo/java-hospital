@@ -311,4 +311,25 @@ public class Database {
             return result;
         }
     }
+    public static int servInfotoServID(String servDateDay, int servDateHour, int doctorID, int patientID, int treatmentID){
+        try{
+            //database: Hospital, user: root, pwd: bayraaT1$DA
+            ResultSet resultset = null;
+            PreparedStatement preparedStatement = null;
+            String sql = "select * from Service where ServiceDateDay = ? and ServiceDateHour = ? and DoctorID = ? and PatientID = ? and TreatmentID = ?;";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, servDateDay);
+            preparedStatement.setInt(2, servDateHour);
+            preparedStatement.setInt(3, doctorID);
+            preparedStatement.setInt(4, patientID);
+            preparedStatement.setInt(5, treatmentID);
+            resultset = preparedStatement.executeQuery();
+            
+            resultset.next();
+            return resultset.getInt("ServiceID");
+        }catch (Exception e){
+            System.out.println("bolq bn");
+            return 0;
+        }
+    }
 }
