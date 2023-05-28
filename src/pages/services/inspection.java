@@ -25,25 +25,25 @@ public class inspection extends JPanel implements ActionListener{
     
     public inspection(Vector <String> data){
         setLayout(new BorderLayout());
-        CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
-            // Perform some asynchronous task
-            System.out.println("Asynchronous task started...");
-            try {
-                TimeUnit.SECONDS.sleep(2); 
-                status="true";
-            } catch (InterruptedException e) {
+        // CompletableFuture<Void> asyncTask = CompletableFuture.runAsync(() -> {
+        //     // Perform some asynchronous task
+        //     System.out.println("Asynchronous task started...");
+        //     try {
+        //         TimeUnit.SECONDS.sleep(2); 
+        //         status="true";
+        //     } catch (InterruptedException e) {
                 
-                e.printStackTrace();
-            }
-            System.out.println("Asynchronous task completed.");
+        //         e.printStackTrace();
+        //     }
+        //     System.out.println("Asynchronous task completed.");
             
-        });
-        try{
-            asyncTask.get();
-        }
-        catch(Exception e){
-            
-        }
+        // });
+        // try{
+        //     asyncTask.get();
+        // }
+        // catch(Exception e){
+
+        // }
         
         
         setPreferredSize(new Dimension(300, HEIGHT));
@@ -77,7 +77,8 @@ public class inspection extends JPanel implements ActionListener{
 
         TreatmentType treatment=new TreatmentType();
 
-        treatmentInfo mainBody=new treatmentInfo(treatment);
+        treatmentInfo mainBody=new treatmentInfo();
+        
 
         add(mainBody);
         
