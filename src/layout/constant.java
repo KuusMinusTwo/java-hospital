@@ -7,7 +7,7 @@ public class constant {
     public static int width;
     public static int height;
 
-    public void run(){
+    public static void run(){
         Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension screenSize = toolkit.getScreenSize();
         width=screenSize.width;
