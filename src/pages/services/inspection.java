@@ -7,9 +7,7 @@ import java.util.Vector;
 
 public class inspection extends JPanel implements ActionListener{
     public static JButton selectedButton;
-    public static JButton homeBtn;
-    public static JButton serviceBtn;
-    public static JButton infoBtn;
+    
     public inspection(Vector <String> data) {
         setLayout(new BorderLayout());
 
@@ -22,24 +20,24 @@ public class inspection extends JPanel implements ActionListener{
         menuJPanel.setLayout(new GridLayout(3, 1));
         menuJPanel.setPreferredSize(new Dimension(200, getHeight()));
         menuJPanel.setBackground(Color.GRAY);
+
+        JButton temp;
+        for(int i=0;i<data.size();i++){
+            temp=createStyledButton(data.get(i));;
+            if(i==0){
+                selectedButton=temp;
+                temp.setBackground(Color.blue);
+            }
+            menuJPanel.add(temp);
+        }
         
-        homeBtn = createStyledButton(data.get(0));
-        homeBtn.setName("homeBtn");
-        serviceBtn = createStyledButton("Үйлчилгээ");
-        serviceBtn.setName("serviceBtn");
-        infoBtn = createStyledButton("Мэдээлэл");
-        infoBtn.setName("infoBtn");
 
-        menuJPanel.add(homeBtn);
-        menuJPanel.add(serviceBtn);
-        menuJPanel.add(infoBtn);
-
+       
         
         add(menuJPanel, BorderLayout.EAST);
        
 
-        selectedButton=homeBtn;
-        homeBtn.setBackground(Color.blue);
+        
 
         JPanel mainBody= new JPanel();
         mainBody.setBackground(Color.white);
