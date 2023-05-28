@@ -15,9 +15,11 @@ public class mainLayout extends JFrame {
     public static CardLayout cardLayout;
     public static header header;
     public static JDialog dialog = new JDialog((Frame)null, "dialog", true);
+
             
     
     public mainLayout()  {
+        
         try{
         setTitle("Hospital");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,7 +42,7 @@ public class mainLayout extends JFrame {
         information panel3 = new information();
         
         
-        contentPanel.add(scroll(panel1), "HomePage");
+        contentPanel.add(panel1, "HomePage");
         contentPanel.add(scroll(panel2), "Services");
         
         contentPanel.add(scroll(panel3), "Information");

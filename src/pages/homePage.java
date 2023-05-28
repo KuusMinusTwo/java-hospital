@@ -98,10 +98,7 @@ public class homePage extends JPanel{
         loc.gridy = 1;
         top.add(buttons, loc);
         add(top);
-        JPanel aboutUs = new JPanel();
-        aboutUs.setBackground(Color.green);
-        aboutUs.setPreferredSize(new Dimension(getWidth(), 500));
-        add(aboutUs);
+        
         
     }
 

@@ -79,7 +79,7 @@ public class inspection extends JPanel implements ActionListener{
 
         TreatmentType treatment=new TreatmentType();
 
-        treatmentInfo mainBody=new treatmentInfo();
+        treatmentInfo mainBody=new treatmentInfo(treatment);
         
 
         add(mainBody);

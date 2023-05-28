@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import layout.constant;
 import layout.mainLayout;
 import model.TreatmentType;
 import pages.userInfo;
@@ -23,6 +24,7 @@ public class treatmentInfo extends JPanel{
             userInfo loginPanel = new userInfo();
            
             loginPanel.setPreferredSize(new Dimension(600, 600));
+            mainLayout.dialog.getContentPane().removeAll();
             mainLayout.dialog.getContentPane().add(loginPanel);
             mainLayout.dialog.pack();
             mainLayout.dialog.setLocationRelativeTo(null);
@@ -32,10 +34,7 @@ public class treatmentInfo extends JPanel{
     };
     public treatmentInfo(TreatmentType treatmentType){
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-        int width=screenSize.width;
-        int height=screenSize.height;
+        
         
         setBackground(Color.white);
         
@@ -57,15 +56,15 @@ public class treatmentInfo extends JPanel{
         JPanel leftSide = new JPanel();
         leftSide.setLayout(new BoxLayout(leftSide, BoxLayout.Y_AXIS));
         JPanel userPart=new JPanel();
-        userPart.setPreferredSize(new Dimension((width-1000), 200));
+        userPart.setPreferredSize(new Dimension((constant.width-1000), 200));
         userPart.setBackground(Color.BLUE);
         leftSide.add(userPart, BorderLayout.NORTH);
         JPanel treatmentPart=new JPanel();
-        treatmentPart.setPreferredSize(new Dimension((width-1000), 300));
+        treatmentPart.setPreferredSize(new Dimension((constant.width-1000), 300));
         treatmentPart.setBackground(Color.yellow);
         leftSide.add(treatmentPart, BorderLayout.NORTH);
         JPanel servicePart=new JPanel();
-        servicePart.setPreferredSize(new Dimension((width-1000), 400));
+        servicePart.setPreferredSize(new Dimension((constant.width-1000), 400));
         servicePart.setBackground(Color.pink);
         leftSide.add(servicePart, BorderLayout.NORTH);
 
