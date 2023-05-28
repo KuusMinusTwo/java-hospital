@@ -57,7 +57,7 @@ public class Database {
             return result;
 
         }catch (Exception e){
-            System.out.println("pisdaa");
+            System.out.println("bolq bn");
             return result;
         }
     }
@@ -74,7 +74,7 @@ public class Database {
             return resultset.getString("Firstname");
 
         }catch (Exception e){
-            System.out.println("pisdaa");
+            System.out.println("bolq bn");
             return "";
         }  
     }
@@ -91,7 +91,7 @@ public class Database {
             return resultset.getString("FirstName");
 
         }catch (Exception e){
-            System.out.println("pisdaa");
+            System.out.println("bolq bn");
             return "";
         }  
     }
@@ -108,7 +108,7 @@ public class Database {
             return resultset.getString("TreatmentName");
 
         }catch (Exception e){
-            System.out.println("pisdaa");
+            System.out.println("bolq bn");
             return "";
         }  
     }
@@ -118,7 +118,7 @@ public class Database {
             //database: Hospital, user: root, pwd: bayraaT1$DA
             ResultSet resultset = null;
             PreparedStatement preparedStatement = null;
-            String sql = "select TreatmentName from TreatmentType where Category = ?;";
+            String sql = "select * from TreatmentType where Category = ?;";
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, category);
             resultset = preparedStatement.executeQuery();
@@ -126,6 +126,7 @@ public class Database {
             boolean noquery = true;
             while(resultset.next()){
                 result.add(resultset.getString("TreatmentName"));
+                result.add(resultset.getString("TreatmentID"));
                 noquery = false;
             }
             if(noquery) {
@@ -133,7 +134,7 @@ public class Database {
             }
             return result;
         }catch (Exception e){
-            System.out.println("pisdaaaa");
+            System.out.println("bolq bn");
             return result;
         }
     }
@@ -159,7 +160,7 @@ public class Database {
             }
             return result;
         }catch (Exception e){
-            System.out.println("pisdaaaa");
+            System.out.println("Bolq bn");
             return result;
         }
     }
@@ -187,7 +188,7 @@ public class Database {
             }
             return treatmentType;
         }catch (Exception e){
-            System.out.println("pisdaaaa");
+            System.out.println("bolq bn");
             return treatmentType;
         }
     }
@@ -213,7 +214,7 @@ public class Database {
             }
             return result;
         }catch (Exception e){
-            System.out.println("pisdaaaa");
+            System.out.println("bolq bn");
             return result;
         }
     }
@@ -239,7 +240,7 @@ public class Database {
             }
             return result;
         }catch (Exception e){
-            System.out.println("pisdaaaa");
+            System.out.println("bolq bn");
             return result;
         }
     }
